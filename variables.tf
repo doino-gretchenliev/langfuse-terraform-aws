@@ -30,11 +30,6 @@ variable "private_subnet_ids" {
   description = "List of private subnet IDs (required when using existing VPC)"
   type        = list(string)
   default     = null
-
-  validation {
-    condition     = var.vpc_id == null || length(coalesce(var.private_subnet_ids, [])) > 0
-    error_message = "private_subnet_ids must be provided when using an existing VPC (vpc_id is set)."
-  }
 }
 
 variable "public_subnet_ids" {
